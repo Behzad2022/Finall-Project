@@ -17,7 +17,7 @@ const createAgent = async (req, res) => {
     try {
         await client.connect();
         const db = client.db("HVAC");
-        const result = await db.collection("Agent").insertOne({
+        const result = await db.collection("Agents").insertOne({
             ...req.body,
             _id: uuidv4(),
         });
@@ -28,4 +28,4 @@ const createAgent = async (req, res) => {
     client.close();
 };
 
-module.exports = {createAgent};
+module.exports = {createAgent}; 

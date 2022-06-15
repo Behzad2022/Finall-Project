@@ -1,4 +1,4 @@
-const { MongoClient, ObjectId } = require("mongodb");
+const { MongoClient } = require("mongodb");
 
 
 require("dotenv").config();
@@ -19,7 +19,7 @@ const getAppointments = async (req, res) => {
 
         const result = await db.collection("Appointments").find().toArray();
 
-        if(result) {
+        if(result.length) {
             res.status(200).json({status:200, data:result});
         }
 

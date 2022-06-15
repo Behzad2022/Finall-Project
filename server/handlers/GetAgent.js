@@ -17,10 +17,7 @@ const getAgent = async (req, res) => {
         await client.connect();
         const db = client.db("HVAC");
 
-        const result = await db.collection("Agent").findOne()
-        if(result) {
-            res.status(200).json({status:200, data:result});
-        }
+        const result = await db.collection("Agents").findOne()
 
     } catch (err) {
         res.status(404).json({status:500, message:"Not Found"})

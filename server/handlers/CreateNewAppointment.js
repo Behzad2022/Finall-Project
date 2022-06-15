@@ -18,12 +18,12 @@ const createNewAppointment = async (req, res) => {
         await client.connect();
         const db = client.db("HVAC");
         
-        //searching existing appointments - if spot and therapist are not available for specified date, throwing an error
+        //searching existing appointments - if slot and agent are not available for specified date, throwing an error
         const searchHistory = await db.collection("Appointments").find({
 
             "date": req.body.date,
-            "spot": req.body.spot,
-            // "therapist": req.body.therapist
+            "slot": req.body.slot,
+            "agent": req.body.agent
         }).toArray();
 
         
@@ -36,7 +36,7 @@ const createNewAppointment = async (req, res) => {
             });
             res.status(201).json({status:201, data: req.body});
         } else {
-            res.status(409).json({status:409, message: "spot not available"})
+            res.status(409).json({status:409, message: "Slot not available"})
         }
         
     } catch (err) {

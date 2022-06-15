@@ -34,7 +34,7 @@ const createNewCustomer = async (req, res) => {
             });
             res.status(201).json({status:201, data: req.body});
         } else {
-            res.status(409).json({status:409, message: "Slot not available"})
+            res.status(409).json({status:409, message: "Spot not available"})
         }
     } catch (err) {
         res.status(500).json({status:500, data: req.body, message: err.message})
